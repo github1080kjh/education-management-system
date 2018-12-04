@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+{#    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
+</head>
+<body>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Add Administrator
+        </div>
+
+        <div class="panel-body">
+            <form action="/addTeacher/" method="post" class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-2">
+                        <!--用户姓名-->
+                        <div class="form-group">
+                            <label for="input_name" class="col-md-4 control-label">Name</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="name" id="input_name" name="username">
+                            </div>
+                        </div>
+
+                        <!--用户账号的密码-->
+                        <div class="form-group">
+                            <label for="input_password" class="col-md-4 control-label">Password</label>
+                            <div class="col-md-8">
+                                <input type="password" class="form-control" placeholder="password" id="input_password" name="password">
+                            </div>
+                        </div>
+
+                        <!--老师教那个专业-->
+                        <div class="form-group">
+                            <label for="input_college" class="col-md-4 control-label">College</label>
+                            <select name="college" id="input_college">
+                                {% for college_info in college_obj %}
+                                    <option value={{ college_info.id }}>{{ college_info.name }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+
+                        <!--提交按钮-->
+                        <div class="form-group">
+                            <button class="btn btn-primary col-sm-3 col-md-offset-4" type="submit">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

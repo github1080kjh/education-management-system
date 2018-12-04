@@ -1,0 +1,23 @@
+{% extends 'login_templates.html' %}
+
+<!--css代码-->
+{% block css %}
+{% endblock %}
+
+
+
+<!--登录用户的提示-->
+{% block content %}
+    <h1>您将使用教师身份登录</h1>
+{% endblock %}
+
+
+<!--内容返回地址-->
+{% block form_head %}
+    <form class="form-horizontal" action="/teacherLogin/" method="post">
+{% endblock %}
+
+<!--错误提示内容-->
+{% block error_message_content %}
+    <span id="error_msg" class="help-block">{{ error_message }}</span>
+{% endblock %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    {#    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Add Class
+        </div>
+        <div class="panel-body">
+            <form action="/addClass/" method="post" class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                        <!--班级名字-->
+                        <div class="form-group">
+                            <label for="inputClass" class="control-label col-md-4">Class</label>
+                            <div class="col-md-8">
+                                <input type="text" id="inputClass" class="form-control" placeholder="Class Name"
+                                       name="class_name">
+                            </div>
+                        </div>
+
+                        <!--老师名字-->
+                        <div class="form-group">
+                            <label for="inputLeader" class="control-label col-md-4">Leader</label>
+                            <select name="leader" id="inputLeader">
+                                {% for leader_info in leader_obj %}
+                                    <option value={{ leader_info.id }}>{{ leader_info.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    <!--提交按钮-->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary col-md-2 col-md-offset-4">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

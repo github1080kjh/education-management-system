@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    {#    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Add Student
+        </div>
+        <div class="body">
+            <div class="panel-body" id="work_line">
+                <div id="top_row" class="row">
+                    <div class="col-md-5 col-md-offset-2">
+                        <form class="form-horizontal" action="/addStudent/" method="post">
+                            <!--学生账户名称-->
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-4 control-label">Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputName" placeholder="name" name="username">
+                                </div>
+                            </div>
+
+                            <!--学生年龄-->
+                            <div class="form-group">
+                                <label for="inputAge" class="col-sm-4 control-label">Age</label>
+                                <div class="col-sm-8">
+                                    <input name="age" type="text" class="form-control" id="inputName" placeholder="name">
+                                </div>
+                            </div>
+
+                            <!--学生账户密码-->
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-sm-4 control-label">Password</label>
+                                <div class="col-sm-8">
+                                    <input name="password" type="password" class="form-control" id="inputPassword"
+                                           placeholder="Password">
+                                </div>
+                            </div>
+
+                            <!--学生身份证号码-->
+                            <div class="form-group">
+                                <label for="inputIdNumber" class="col-sm-4 control-label">Id Number</label>
+                                <div class="col-sm-8">
+                                    <input name="id_number" type="text" class="form-control" id="inputIdNumber" placeholder="id number">
+                                </div>
+                            </div>
+
+                            <!--学院选择-->
+                            <div class="form-group">
+                                <label for="inputCollege" class="col-sm-4 control-label">College</label>
+                                <select name="college" id="inputCollege">
+                                    {% for college_info in college_obj %}
+                                        <option value={{ college_info.id }}>{{ college_info.name }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+
+                            <!--班级选择-->
+                            <div class="form-group">
+                                <label for="inputClass" class="col-sm-4 control-label">Class</label>
+                                <select name="classes" id="inputClass">
+                                    {% for class_info in class_obj %}
+                                        <option value={{ class_info.id }}>{{ class_info.name }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+
+                            <!--提交按钮-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-8">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="/static/jquery-3.3.1.min.js"></script>
+            <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

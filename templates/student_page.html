@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    {#    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Student Page</h1>
+        </div>
+        <div class="col-md-3 col-md-offset-5">
+            <div class="row">username:{{ username }}</div>
+            <div class="row">
+                <button class="btn btn-danger">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Student manage</h3>
+        </div>
+
+        <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li><a href="#person_info" data-toggle="tab">Person Info</a></li>
+                <li><a href="#home_work" data-toggle="tab">HomeWork</a></li>
+                <li><a href="#payment_conditions" data-toggle="tab">Payment Conditions</a></li>
+                <li><a href="#suggestive_for_us" data-toggle="tab">Suggestive For Us</a></li>
+            </ul>
+            <div class="tab-content">
+                <!--首先显示-->
+                <div class="tab-pane active" id="person_info">
+                    <dl class="dl-horizontal" style="padding-bottom: 100px">
+                        {% for person_info in person_obj %}
+
+                            <dt>Name</dt>
+                            <dd>{{ person_info.name }}</dd>
+                            <dt>Age</dt>
+                            <dd>{{ person_info.age }}</dd>
+                            <dt>Id_Number</dt>
+                            <dd>{{ person_info.id_number }}</dd>
+                            <dt>Class</dt>
+                            <dd>{{ person_info.classes.name }}</dd>
+                            <dt>College</dt>
+                            <dd>{{ person_info.college.name }}</dd>
+                            <dt>Your Leader</dt>
+                            <dd>{{ person_info.classes.leader.name }}</dd>
+                        {% endfor %}
+                </div>
+
+                <!--学生作业-->
+                <div class="tab-pane" id="home_work">
+                    <table class="table table-bordered table-striped table-hover table-dense">
+
+                    </table>
+                </div>
+
+                <!--缴费情况-->
+                <div class="tab-pane" id="payment_conditions">
+                    <table class="table table-bordered table-striped table-hover table-dense">
+
+                    </table>
+
+                </div>
+
+                <!--投诉与建议信息管理-->
+                <div class="tab-pane" id="suggestive_for_us">
+                    <form class="form" action="/studentPage/" method="post">
+
+                        <!--提交人姓名-->
+                        <div class="form-group">
+                            <label for="grant_name" class="control-label">Submit Name</label>
+                            <div>
+                                <select name="submit_name" id="grant_name">
+                                    {% for student_info in student_obj %}
+                                        <option value={{ student_info.id }}>{{ student_info.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--提交的建议的内容-->
+                        <textarea class="form-control" rows="8" name="suggestive_info" placeholder="please input your sincere suggestive for us :"></textarea>
+
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-10">
+                                <button class="btn btn-primary" type="submit">submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
